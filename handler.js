@@ -1,14 +1,7 @@
 import navigate from './navigator'
 
 const handleDeepLink = (url) => {
-  const orderLinksPattern = /order\?id=(.+)$/
-  if (orderLinksPattern.test(url)) { // is order url
-    const matches = url.match(orderLinksPattern)
-    const orderId = matches[1]
-    navigate('OrderDetail', {
-      orderId
-    })
-  } else if (url.startsWith('https://')) { // is web url
+  if (url.startsWith('https://')) { // is web url
     const route = url.replace(/.*?:\/\//g, '')
     const routeName = route.split('/')[1]
 
