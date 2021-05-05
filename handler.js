@@ -1,5 +1,9 @@
 import navigate from './navigator'
 
+// Sample URLS
+// https://chippercash.app.link/order?id=123
+// chippercash://pay?amount=2
+
 const handleDeepLink = (url) => {
   if (url.startsWith('https://')) { // is web url
     const route = url.replace(/.*?:\/\//g, '')
