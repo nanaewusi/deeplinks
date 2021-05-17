@@ -1,7 +1,9 @@
-import navigate from './navigator'
+const navigate = require("./navigator");
+const URL = require("url");
+const assert = require("assert");
+const querystring = require("querystring");
 
 /*
-
 Overview:
 =========
 The ChipperCash marketing team, runs a new social media ad campaign every 3 weeks and would like to start using 
@@ -62,9 +64,64 @@ the navigate function will correctly navigate to that screen and pass the provid
 
 */
 
+// a mapping of URL -> View name
+const urlMapping = {
+  send: "SendMoney",
+  request: "RequestMoney",
+  authorize: "AuthorisationMerchant",
+  "airtime/buy": "BuyAirtime",
+  "airtime/share": "ShareAirtime",
+  verify: "Verification",
+  help: "Support",
+};
+
+// function to parse a URL
+const parseUrl = (url) => {
+  // Parse the URL
+  const { query, pathname } = URL.parse(url);
+
+  // Determine which view we will navigate to
+  const viewName = urlMapping[pathname.replace("/", "")];
+
+  // Parse the query string into a parameters object
+  const queryObj = querystring.parse(query)
+  return [viewName, queryObj];
+};
 
 // Implement your solution.
 const processDeepLink = (url) => {
-}
+  const [viewName, query] = parseUrl(url);
+  // Navigate to the appropriate view and provide the parameters
+  navigate(viewName, query);
+};
 
-export default processDeepLink
+module.exports = processDeepLink;
+
+
+// BELOW here tests
+const runTests = () => {
+  const testUrls = [
+    "chippercash://chippercash.com/send?amount=50&currency=GHS",
+    // "chippercash://chippercash.com/airtime/buy?package=midnight",
+    // "chippercash://chippercash.com/help?topic=id_verification",
+    // "chippercash://chippercash.com/request?amount=100",
+  ];
+
+  const expected = [
+    // viewName, queryParameters
+    ["SendMoney", { amount: "50", currency: "GHS" }],
+    //      ["", {}],
+    //      ["", {}],
+    //      ["", {}],
+  ];
+
+  testUrls.forEach((testUrl, index) => {
+    const [viewName, query] = parseUrl(testUrl);
+    const [expectedViewName, expectedQuery] = expected[index];
+
+    assert.strictEqual(viewName, expectedViewName);
+    assert.deepStrictEqual(Object.assign({}, query), expectedQuery);
+  });
+};
+
+runTests();
