@@ -14,25 +14,25 @@ Here is their brief:
 ====================
 
 1. We would like to have the following links setup. For each url we've indicated the name of the screen to which users should be sent.
-  i.    URL: chippercash://send 
+  i.    URL: https://chippercash.app.link/send 
         TargetScreenName: 'SendMoney'
 
-  ii.   URL: chippercash://request 
+  ii.   URL: https://chippercash.app.link/request 
         TargetScreenName: 'RequestMoney'
 
-  iii.  URL: chippercash://authorize 
+  iii.  URL: https://chippercash.app.link/authorize 
         TargetScreenName: 'AuthorisationMerchant'
 
-  iv.   URL: chippercash://airtime/buy
+  iv.   URL: https://chippercash.app.link/airtime/buy
         TargetScreenName: 'BuyAirtime'
 
-  iv.   URL: chippercash://airtime/share
+  iv.   URL: https://chippercash.app.link/airtime/share
         TargetScreenName: 'ShareAirtime'
 
-  v.    URL: chippercash://verify 
+  v.    URL: https://chippercash.app.link/verify 
         TargetScreenName: 'Verification'
 
-  vi.    URL: chippercash://help 
+  vi.   URL: https://chippercash.app.link/help 
         TargetScreenName: 'Support'
 
 2. Deeplink urls MAY contain query parameters containing extra information that should be sent to the target screen. For example, the chippercash://send url
