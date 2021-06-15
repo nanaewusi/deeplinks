@@ -55,11 +55,10 @@ You are to assume that when called with the name of a screen and and object cont
 the navigate function will correctly navigate to that screen and pass the provided parameters to that screen.
 
 2) Here a few example of what real incoming links might look like based on the requirements described above:
-  chippercash://send?amount=50&currency=GHS
-  chippercash://airtime/buy?package=midnight
-  chippercash://help?topic=id_verification
-  chippercash://request?amount=100
-
+  https://chippercash.app.link/send?amount=50&currency=GHS
+  https://chippercash.app.link/airtime/buy?package=midnight
+  https://chippercash.app.link/help?topic=id_verification
+  https://chippercash.app.link/request?amount=100
 */
 
 
