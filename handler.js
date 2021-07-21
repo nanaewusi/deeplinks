@@ -1,4 +1,4 @@
-import navigate from './navigator'
+const navigate = require('./navigator')
 
 /*
 
@@ -66,4 +66,4 @@ the navigate function will correctly navigate to that screen and pass the provid
 const processDeepLink = (url) => {
 }
 
-export default processDeepLink
+module.exports = processDeepLink
